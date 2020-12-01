@@ -1,0 +1,188 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+h1 {
+    line-height: 80%;
+}
+
+h3 {
+    line-height: 10%;
+}
+
+#searchGrid {
+    display: flex;
+    padding: 1em 1em 2em 1em;
+    justify-content: center;
+    align-items: center;
+}
+
+#submit {
+    margin: 0em 2em 0em 0em;
+}
+
+.unit {
+    margin: 0em 0.8em 0em 0.8em;
+}
+
+#header {
+    display: flex;
+    justify-content: center;
+}
+
+#subHeader {
+    display: flex;
+    justify-content: center;
+}
+
+#infoGridContainer {
+    display: flex;
+    justify-content: center;
+}
+
+#infoGrid {
+    display: inline-grid;
+    grid-template-areas: 
+    "cityLabel city img"
+    "countryLabel country img"
+    "timeLabel time img"
+    "tempLabel temp img"
+    "feelsLabel feels img"
+    "conditionLabel condition img";
+}
+
+#cityNameLabel {
+    grid-area: cityLabel;
+}
+
+#cityName {
+    grid-area: city;
+}
+
+#countryNameLabel {
+    grid-area: countryLabel;
+}
+
+#countryName {
+    grid-area: country;
+}
+
+#timeLabel {
+    grid-area: timeLabel ;
+}
+
+#time{
+    grid-area: time;    
+}
+
+#conditionImg {
+    grid-area: img;
+    width: 20em;
+    justify-self: center;
+}
+
+#cityTempLabel {
+    grid-area: tempLabel;
+}
+
+#cityTemp {
+    grid-area: temp;
+}
+
+#cityTempFeelsLabel {
+    grid-area: feelsLabel;
+}
+
+#cityTempFeels {
+    grid-area: feels;
+}
+
+#conditionLabel {
+    grid-area: conditionLabel;
+}
+
+#condition {
+    grid-area: condition;
+}
+
+.label {
+    font-size: 0.8em;
+    font-weight: 600;
+    color: #4e5054;
+    border: black 1px solid;
+    width: 8em;
+    padding: 0.2em 1em 0.5em 1em;
+}
+
+.info {
+    font-size: 1.2em;
+    color: #2a2b2e;
+    border: black 1px solid;
+    width: 14em;
+    padding: 0.2em 1em 0.5em 1em;
+}
+
+
+/* CSS FOR SLIDER */
+/* The switch - the box around the slider */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+  }
+  
+  /* Hide default HTML checkbox */
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  /* The slider */
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  input:checked + .slider {
+    background-color: #2196F3;
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+  
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }

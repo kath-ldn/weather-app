@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+<div id="header">
+<h1>Weather App</h1>
+</div>
+<div id="subHeader">
+    <h3>Search for a City</h3>
+    </div>
+    <div id="searchGrid">
+        <form id="search" name="search">
+            <input type="text" id="userText" name="userText" placeholder="Search for a city">
+            <input type="submit" id="submit">
+        </form>
+        <div id="celcius" class="unit">
+            <p>celcius</p>
+        </div>
+        <label class="switch">
+            <input type="checkbox" id="unitSwitch">
+            <span class="slider round"></span>
+        </label>
+        <div id="farenheight" class="unit">
+            <p>farenheight</p>
+        </div>
+</div>
+<div id ="infoGridContainer">
+    <div id ="infoGrid">
+        <div id="cityNameLabel" class="label">City</div>
+        <div id="cityName" class="info"> </div>
+        <div id="countryNameLabel" class="label">Country</div>
+        <div id="countryName" class="info"> </div>
+        <div id="timeLabel" class="label">Time</div>
+        <div id="time" class="info"> </div>
+        <img id="conditionImg" src="/icons/sun-icon.png">
+        <div id="cityTempLabel" class="label">Temperature</div>
+        <div id="cityTemp" class="info"> </div>
+        <div id="cityTempFeelsLabel" class="label">Feels Like</div>
+        <div id="cityTempFeels" class="info"> </div>
+        <div id="conditionLabel" class="label">Condition:</div>
+        <div id="condition" class="info"> </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
