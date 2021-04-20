@@ -1,53 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Document</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600&display=swap" rel="stylesheet">
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <title>Weather App</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="shortcut icon" type="image/png" href="./icons/favicon.ico"/>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600&display=swap" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+    </head>
 <body>
-<div id="header">
-<h1>Weather App</h1>
-</div>
-<div id="subHeader">
-    <h3>Search for a City</h3>
-    </div>
-    <div id="searchGrid">
-        <form id="search" name="search">
-            <input type="text" id="userText" name="userText" placeholder="Search for a city">
-            <input type="submit" id="submit">
-        </form>
-        <div id="celcius" class="unit">
-            <p>celcius</p>
+    <main id="appWrapper">
+        <h1>Weather</h1>
+        <div id="searchWrapper">
+            <form id="search" name="search">
+                <input type="text" id="userText" name="userText" placeholder="Search for a city">
+                <input type="submit" id="submit" value="Go">
+            </form>
+            <div class="sliderWrapper">
+                <div id="celcius" class="unit">°C</div>
+                <label class="switch">
+                    <input type="checkbox" id="unitSwitch">
+                    <span class="slider round"></span>
+                </label>
+                <div id="farenheight" class="unit">°F</div>
+            </div>
         </div>
-        <label class="switch">
-            <input type="checkbox" id="unitSwitch">
-            <span class="slider round"></span>
-        </label>
-        <div id="farenheight" class="unit">
-            <p>farenheight</p>
+        <div id ="infoContainer">
+            <img id="conditionImg" src="./icons/sun-icon.png">
+            <div id="cityNameContainer" class="statContainer">
+                <p class="label">City:</p>
+                <div id="cityName" class="info"></div>
+            </div>
+            <div id="countryNameContainer" class="statContainer">
+                <p class="label">Country:</p>
+                <div id="countryName" class="info"></div>
+            </div>
+            <div id="timeContainer" class="statContainer">
+                <p class="label">Time:</p>
+                <div id="time" class="info"></div>
+            </div>
+            <div id="cityTempContainer" class="statContainer">
+                <p class="label">Temperature:</p>
+                <div id="cityTemp" class="info"></div>
+            </div>
+            
+            <div id="feelsLikeContainer" class="statContainer">
+                <p class="label">Feels Like:</p>
+                <div id="cityTempFeels" class="info"></div>
+            </div>
+            
+            <div id="conditionContainer" class="statContainer">
+                <p class="label">Condition:</p>
+                <div id="condition" class="info"></div>
+            </div>
         </div>
-</div>
-<div id ="infoGridContainer">
-    <div id ="infoGrid">
-        <div id="cityNameLabel" class="label">City</div>
-        <div id="cityName" class="info"> </div>
-        <div id="countryNameLabel" class="label">Country</div>
-        <div id="countryName" class="info"> </div>
-        <div id="timeLabel" class="label">Time</div>
-        <div id="time" class="info"> </div>
-        <img id="conditionImg" src="/icons/sun-icon.png">
-        <div id="cityTempLabel" class="label">Temperature</div>
-        <div id="cityTemp" class="info"> </div>
-        <div id="cityTempFeelsLabel" class="label">Feels Like</div>
-        <div id="cityTempFeels" class="info"> </div>
-        <div id="conditionLabel" class="label">Condition:</div>
-        <div id="condition" class="info"> </div>
-    </div>
-</div>
+    </main>
+    <footer>
+        <p>© Kath Turner, 2021</p>
+    </footer>
+    <script src="script.js"></script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="/__/firebase/8.4.1/firebase-app.js"></script>
 
-<script src="script.js"></script>
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+
+    <!-- Initialize Firebase -->
+    <script src="/__/firebase/init.js"></script>
 </body>
 </html>

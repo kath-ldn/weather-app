@@ -1,65 +1,69 @@
+let weatherAPI = '399dc43dded6a47a3e546abbd02f0303';
+
 function updateImage(conditionData, h){
     let conditionImg = document.getElementById("conditionImg");
     let condition = conditionData.toLowerCase();
     if(condition.includes("clear")) {
         if(h > 6 && h < 18) {
-            conditionImg.src = "/icons/sun-icon.png";
+            conditionImg.src = "./icons/sun-icon.png";
         } else {
-        conditionImg.src = "/icons/moon-icon.png";
+        conditionImg.src = "./icons/moon-icon.png";
         }
     } else if (condition.includes("clouds") && !condition.includes("rain") && !condition.includes("drizzle")) {
-        conditionImg.src = "/icons/clouds-icon.png";
+        conditionImg.src = "./icons/clouds-icon.png";
     } else if (condition.includes("rain") || condition.includes("drizzle") && !condition.includes("thunderstorm")) {
-        conditionImg.src = "/icons/rain-icon.png";
+        conditionImg.src = "./icons/rain-icon.png";
     } else if (condition.includes("thunderstorm")) {
-        conditionImg.src = "/icons/thunderstorm-icon.png";
+        conditionImg.src = "./icons/thunderstorm-icon.png";
     } else if (condition.includes("snow")) {
-        conditionImg.src = "/icons/snow-icon.png";
+        conditionImg.src = "./icons/snow-icon.png";
     } else if (condition.includes("mist" || condition.includes("smoke") || condition.includes("haze") || condition.includes("sand") || condition.includes("fog") || condition.includes("dust") || condition.includes("ash"))) {
-        conditionImg.src = "/icons/fog-icon.png";
+        conditionImg.src = "./icons/fog-icon.png";
     } else if (condition.includes("qualls" || "tornado")) {
-        conditionImg.src = "/icons/wind-icon.png";
+        conditionImg.src = "./icons/wind-icon.png";
     }
-
-}
+};
 
 function getUKTime(timezone) {
     let tempDate = new Date()
     let tempHours = tempDate.getUTCHours();  
     let tempMins = tempDate.getUTCMinutes();
     return totalSeconds = ((tempHours * 60) + tempMins) * 60;
-}
+};
 
 function calculateLocationTime(locationSeconds, conditionData) {
     let time = document.getElementById("time");
     locationSeconds = Number(locationSeconds);
     var h = Math.floor(locationSeconds / 3600);
     var m = Math.floor(locationSeconds % 3600 / 60);
-
     if(h >= 24) {
         h = h - 24;
-    }
-
+    };
     let amPM;
     if(h < 12) {
         amPM = "am";
     } else {
         amPM = "pm";
-    }
-
+    };
     if (m >= 10) {
-    time.textContent = h + ":" + m + amPM;
+        time.textContent = h + ":" + m + amPM;
     } else {
         time.textContent = h + ":" + "0" + m + amPM;
-    }
+    };
     updateImage(conditionData, h);
-}
+};
 
 function getCurrentTime(timezone, conditionData) {
     let UKseconds = getUKTime(timezone);
     let locationSeconds = UKseconds + timezone;
-    calculateLocationTime(locationSeconds, conditionData)
-}
+    calculateLocationTime(locationSeconds, conditionData);
+};
+
+function titleCase(str) {
+    return str.toLowerCase().split(' ').map(function(word) {
+        return word.replace(word[0], word[0].toUpperCase());
+    }).join(' ');
+};
 
 function updatePage(temp, feelsLike, name, country, conditionData, timezone) {
     //id's divs to hold info
@@ -72,49 +76,43 @@ function updatePage(temp, feelsLike, name, country, conditionData, timezone) {
     //updates
     cityName.textContent = name;
     countryName.textContent = country;
-    cityTemp.textContent = temp;
-    cityTempFeels.textContent = feelsLike;
-    condition.textContent = conditionData;
+    cityTemp.textContent = temp.toFixed(0) + "°";
+    cityTempFeels.textContent = feelsLike.toFixed(0) + "°";
+    condition.textContent = titleCase(conditionData);
     getCurrentTime(timezone, conditionData);
 }
 
 // uses async/await function to get weather deets
-    async function getWeather(unitUrl) {
+async function getWeather(unitUrl) {
     let citySearch = document.getElementById("search");        
-      const baseUrl = 'http://api.openweathermap.org/data/2.5/weather?q=';
-      //add if-else for temp
-      let userCity = search.userText.value;
-      const response = await fetch(baseUrl + userCity + unitUrl, {mode: 'cors'});
-      const weatherData = await response.json();
-      const temp = weatherData.main.temp;
-      const feelsLike = weatherData.main.feels_like;
-      const name = weatherData.name;
-      const country = weatherData.sys.country;
-      const conditionData = weatherData.weather[0].description;
-      const timezone = weatherData.timezone;
-      updatePage(temp, feelsLike, name, country, conditionData, timezone);
-    } 
+    const baseUrl = 'http://api.openweathermap.org/data/2.5/weather?q=';
+    //add if-else for temp
+    let userCity = search.userText.value;
+    const response = await fetch(baseUrl + userCity + unitUrl, {mode: 'cors'});
+    const weatherData = await response.json();
+    const temp = weatherData.main.temp;
+    const feelsLike = weatherData.main.feels_like;
+    const name = weatherData.name;
+    const country = weatherData.sys.country;
+    const conditionData = weatherData.weather[0].description;
+    const timezone = weatherData.timezone;
+    updatePage(temp, feelsLike, name, country, conditionData, timezone);
+}; 
 
 let unitSwitch = document.getElementById("unitSwitch");
 
 function getWeatherInUnit() {
-    if (unitSwitch.checked) {
-        unitUrl = '&units=imperial&appid=762516bd2937e6133ccabeabe77788c1';
-            getWeather(unitUrl)
-    } else {
-        unitUrl = '&units=metric&appid=762516bd2937e6133ccabeabe77788c1';
-        getWeather(unitUrl)
-    }
-}
+    let unit = (unitSwitch.checked) ? 'imperial' : 'metric';
+    let url = '&units=' + unit + '&appid=';
+    getWeather(url + weatherAPI);
+};
 
 //button to submit user selection
-    let submit = document.getElementById("submit");
-      search.addEventListener("click", () =>{
-          getWeatherInUnit();
-          event.preventDefault();
-      });
-
-
+let submit = document.getElementById("submit");
+    search.addEventListener("click", () =>{
+    getWeatherInUnit();
+    event.preventDefault();
+});
 
 unitSwitch.addEventListener("change", function() {
     if (this.checked) {
@@ -127,7 +125,7 @@ unitSwitch.addEventListener("change", function() {
 /* For reference - example using promises rather than async/await
 uses promises to get weather deets
     function promiseWeather() {
-        const baseUrl = 'http://api.openweathermap.org/data/2.5/weather?q=London&units=imperial&appid=762516bd2937e6133ccabeabe77788c1'
+        const baseUrl = 'http://api.openweathermap.org/data/2.5/weather?q=London&units=imperial&appid=' + weatherAPI
         fetch(baseUrl, {mode: 'cors'})
         .then(function(response) {
             return response.json();

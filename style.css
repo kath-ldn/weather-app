@@ -1,146 +1,85 @@
+@import url(./reset.css);
+
 body {
     font-family: 'Montserrat', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+#appWrapper{
+    width: 400px;
+    height: 600px;
+    border: 4px solid black;
+    border-radius: 50px;
+    margin-bottom: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
 h1 {
-    line-height: 80%;
+    font-size: 46px;
+    padding: 46px 0 12px 0;
 }
 
-h3 {
-    line-height: 10%;
-}
-
-#searchGrid {
+#searchWrapper, .sliderWrapper{
     display: flex;
-    padding: 1em 1em 2em 1em;
-    justify-content: center;
     align-items: center;
 }
 
-#submit {
-    margin: 0em 2em 0em 0em;
+#searchWrapper{
+    width: 100%;
+    box-sizing: border-box;
+    padding: 5% 5% 0 5%;
+    justify-content: space-around;
+}
+
+#userText{
+    height: 25px;
+    width: 175px;
+    padding: 0;
+    margin: 0;
+}
+
+input{
+    font-family: 'Montserrat', sans-serif;
+}
+
+#submit{
+    height: 29px;
+    border: none;
+    background-color: #2196F3;
+    color: white;
+    border-radius: 20%;
+}
+
+#submit:hover{
+    cursor: pointer;
 }
 
 .unit {
-    margin: 0em 0.8em 0em 0.8em;
+    padding: 0 5px 0 5px;
 }
 
-#header {
-    display: flex;
-    justify-content: center;
-}
-
-#subHeader {
-    display: flex;
-    justify-content: center;
-}
-
-#infoGridContainer {
-    display: flex;
-    justify-content: center;
-}
-
-#infoGrid {
-    display: inline-grid;
-    grid-template-areas: 
-    "cityLabel city img"
-    "countryLabel country img"
-    "timeLabel time img"
-    "tempLabel temp img"
-    "feelsLabel feels img"
-    "conditionLabel condition img";
-}
-
-#cityNameLabel {
-    grid-area: cityLabel;
-}
-
-#cityName {
-    grid-area: city;
-}
-
-#countryNameLabel {
-    grid-area: countryLabel;
-}
-
-#countryName {
-    grid-area: country;
-}
-
-#timeLabel {
-    grid-area: timeLabel ;
-}
-
-#time{
-    grid-area: time;    
-}
-
-#conditionImg {
-    grid-area: img;
-    width: 20em;
-    justify-self: center;
-}
-
-#cityTempLabel {
-    grid-area: tempLabel;
-}
-
-#cityTemp {
-    grid-area: temp;
-}
-
-#cityTempFeelsLabel {
-    grid-area: feelsLabel;
-}
-
-#cityTempFeels {
-    grid-area: feels;
-}
-
-#conditionLabel {
-    grid-area: conditionLabel;
-}
-
-#condition {
-    grid-area: condition;
-}
-
-.label {
-    font-size: 0.8em;
-    font-weight: 600;
-    color: #4e5054;
-    border: black 1px solid;
-    width: 8em;
-    padding: 0.2em 1em 0.5em 1em;
-}
-
-.info {
-    font-size: 1.2em;
-    color: #2a2b2e;
-    border: black 1px solid;
-    width: 14em;
-    padding: 0.2em 1em 0.5em 1em;
-}
-
-
-/* CSS FOR SLIDER */
-/* The switch - the box around the slider */
 .switch {
     position: relative;
     display: inline-block;
     width: 60px;
-    height: 34px;
-  }
+    height: 30px;
+}
   
-  /* Hide default HTML checkbox */
-  .switch input {
+.switch input {
     opacity: 0;
     width: 0;
     height: 0;
-  }
-  
-  /* The slider */
-  .slider {
+}
+
+.slider {
     position: absolute;
     cursor: pointer;
     top: 0;
@@ -150,39 +89,77 @@ h3 {
     background-color: #ccc;
     -webkit-transition: .4s;
     transition: .4s;
-  }
+}
   
-  .slider:before {
+.slider:before {
     position: absolute;
     content: "";
-    height: 26px;
-    width: 26px;
+    height: 22px;
+    width: 22px;
     left: 4px;
     bottom: 4px;
     background-color: white;
     -webkit-transition: .4s;
     transition: .4s;
-  }
+}
   
-  input:checked + .slider {
+input:checked + .slider {
     background-color: #2196F3;
-  }
+}
   
-  input:focus + .slider {
+input:focus + .slider {
     box-shadow: 0 0 1px #2196F3;
-  }
+}
   
-  input:checked + .slider:before {
+input:checked + .slider:before {
     -webkit-transform: translateX(26px);
     -ms-transform: translateX(26px);
     transform: translateX(26px);
-  }
-  
-  /* Rounded sliders */
-  .slider.round {
+}
+
+.slider.round {
     border-radius: 34px;
-  }
-  
-  .slider.round:before {
+}
+
+.slider.round:before {
     border-radius: 50%;
-  }
+}
+
+#infoContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 70%;
+}
+
+#conditionImg {
+    width: 200px;
+    padding: 30px;
+}
+
+.statContainer{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    font-size: 18px;
+    padding-bottom: 4px;
+}
+
+.label{
+    padding-right: 10px;
+    width: 50%;
+    text-align: end;
+    color: rgb(109, 109, 109);
+}
+
+.info{
+    padding-left: 7.5px;
+    width: 50%;
+}
+
+footer{
+    position: fixed;
+    bottom: 4px;
+    font-size: 12px;
+    color: rgb(109, 109, 109);
+}
