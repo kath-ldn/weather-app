@@ -85,7 +85,7 @@ function updatePage(temp, feelsLike, name, country, conditionData, timezone) {
 // uses async/await function to get weather deets
 async function getWeather(unitUrl) {
     let citySearch = document.getElementById("search");        
-    const baseUrl = 'http://api.openweathermap.org/data/2.5/weather?q=';
+    const baseUrl = 'https://api.openweathermap.org/data/2.5/weather?q=';
     //add if-else for temp
     let userCity = search.userText.value;
     const response = await fetch(baseUrl + userCity + unitUrl, {mode: 'cors'});
@@ -125,7 +125,7 @@ unitSwitch.addEventListener("change", function() {
 /* For reference - example using promises rather than async/await
 uses promises to get weather deets
     function promiseWeather() {
-        const baseUrl = 'http://api.openweathermap.org/data/2.5/weather?q=London&units=imperial&appid=' + weatherAPI
+        const baseUrl = 'https://api.openweathermap.org/data/2.5/weather?q=London&units=imperial&appid=' + weatherAPI
         fetch(baseUrl, {mode: 'cors'})
         .then(function(response) {
             return response.json();
