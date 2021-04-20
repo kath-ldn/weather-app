@@ -1,3 +1,4 @@
+//user to replace with own API
 let weatherAPI = '399dc43dded6a47a3e546abbd02f0303';
 
 function updateImage(conditionData, h){

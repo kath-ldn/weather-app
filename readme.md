@@ -10,7 +10,7 @@ The objective of this project was to practice getting & using data from APIs. I 
 
 ### Live Demo
 
-[To Add Firebase link]
+[GitHub Pages](https://kath-ldn.github.io/weather-app/)
 
 ### Built with
 
