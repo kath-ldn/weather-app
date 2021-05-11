@@ -8,6 +8,7 @@ body {
     justify-content: center;
     width: 100vw;
     height: 100vh;
+    background: url(./sky-img.jpeg)
 }
 
 #appWrapper{
@@ -20,6 +21,7 @@ body {
     flex-direction: column;
     align-items: center;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    background-color: white;
 }
 
 h1 {
